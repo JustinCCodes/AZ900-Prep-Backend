@@ -19,4 +19,5 @@ app.UseHttpsRedirection(); // Enforces HTTPS
 app.UseCors("FrontendOnly"); // Restricts to Frontend Origin
 app.UseRateLimiter(); // Guards before hits endpoints
 
+await app.UseSeedData();
 app.Run();
