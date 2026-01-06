@@ -38,6 +38,7 @@ public class GetStandardExamHandler(AppDbContext context)
     private async Task<List<QuestionDto>> GetRandomByDomain(string category, int count, CancellationToken ct)
     {
         return await context.Questions
+            .AsNoTracking()
             .Where(q => q.Category == category) // Filters by category
             .Include(q => q.Answers) // Includes related answers
             .OrderBy(q => EF.Functions.Random()) // Randomizes order

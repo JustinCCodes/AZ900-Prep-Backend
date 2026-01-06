@@ -14,6 +14,7 @@ public static class GetStandardExamEndpoint
             return result.ToActionResult(); // Converts result to HTTP action result
         })
         // Adds rate limiting policy
-        .RequireRateLimiting("api-policy");
+        .RequireRateLimiting("api-policy")
+        .WithSummary("Retrieves a weighted 30-question AZ-900 exam set.");
     }
 }
