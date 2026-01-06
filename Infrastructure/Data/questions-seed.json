@@ -1,0 +1,14 @@
+[
+  {
+    "Text": "Which Azure service is used to manage and secure identities formerly known as Azure Active Directory?",
+    "Category": "Identity, Access, and Security",
+    "Type": 0,
+    "Explanation": "Microsoft Entra ID is the new name for Azure Active Directory as of the 2024-2026 updates.",
+    "Answers": [
+      { "Text": "Azure Bastion", "IsCorrect": false },
+      { "Text": "Microsoft Entra ID", "IsCorrect": true },
+      { "Text": "Azure Sentinel", "IsCorrect": false },
+      { "Text": "Microsoft Purview", "IsCorrect": false }
+    ]
+  }
+]

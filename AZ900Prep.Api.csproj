@@ -16,6 +16,9 @@
     <PrivateAssets>all</PrivateAssets>
   </PackageReference>
   <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
+  <None Update="Infrastructure/Data/questions-seed.json">
+  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+</None>
 </ItemGroup>
 
 </Project>

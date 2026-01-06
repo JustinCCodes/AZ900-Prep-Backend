@@ -33,4 +33,16 @@ public static class DependencyInjection
 
         return services;
     }
+
+    // Seeds database with initial data
+    public static async Task UseSeedData(this IApplicationBuilder app)
+    {
+        // Creates scope to get AppDbContext
+        using var scope = app.ApplicationServices.CreateScope();
+        // Gets AppDbContext instance
+        var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        // Seeds database
+        await DbInitializer.SeedAsync(context);
+    }
 }
+
