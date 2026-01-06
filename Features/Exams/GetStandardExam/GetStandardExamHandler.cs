@@ -21,7 +21,10 @@ public class GetStandardExamHandler(AppDbContext context)
 
         // Validates that enough questions were retrieved
         if (allQuestions.Count < 30)
-            return Result<GetStandardExamResponse>.Failure("Insufficient questions in the bank to generate a full exam.");
+        {
+            return Result<GetStandardExamResponse>.Failure(
+                new ResultError("Exam.Incomplete", "The question bank does not have enough questions for all domains."));
+        }
 
         // Returns the assembled exam response
         return Result<GetStandardExamResponse>.Success(new GetStandardExamResponse
