@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Diagnostics;
-
 namespace AZ900Prep.Api.Infrastructure;
 
 public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IExceptionHandler

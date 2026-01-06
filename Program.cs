@@ -10,6 +10,10 @@ builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
+// Middleware Configuration
+app.UseSecurityHeaders(); // Custom Security Headers Middleware
+app.UseExceptionHandler(); // Global Exception Handling Middleware
+
 // Configures Middleware Pipeline
 if (app.Environment.IsDevelopment())
 {
@@ -17,13 +21,12 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseSecurityHeaders(); // Custom Security Headers Middleware
-app.UseExceptionHandler(); // Global Exception Handling Middleware
 app.UseHttpsRedirection(); // Enforces HTTPS
 app.UseCors("FrontendOnly"); // Restricts to Frontend Origin
 app.UseRateLimiter(); // Guards before hits endpoints
 
 app.MapGetStandardExam(); // Maps Exam Endpoint
+app.MapGetEndlessQuestions(); // Maps Endless Questions Endpoint
 
 await app.UseSeedData(); // Seeds Initial Data
 app.Run(); // Starts the Application

@@ -8,7 +8,14 @@ public static class DependencyInjection
     {
         // SQLite Database Setup
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+                    options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+
+        // Validators Registration
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly); // Registers all validators in the assembly
+
+        // Feature Handlers
+        services.AddScoped<GetStandardExamHandler>(); // Registers handler for standard exam retrieval
+        services.AddScoped<GetEndlessQuestionsHandler>(); // Registers handler for endless questions retrieval
 
         // Rate Limiting
         services.AddRateLimiter(options =>
@@ -22,7 +29,7 @@ public static class DependencyInjection
             });
         });
 
-        // Locked to Frontend Port
+        // CORS Configuration
         services.AddCors(options =>
         {
             // CORS policy allowing only frontend origin
@@ -32,10 +39,8 @@ public static class DependencyInjection
                        .AllowAnyHeader()); // Allows all headers
         });
 
-        services.AddScoped<GetStandardExamHandler>(); // Exam Handler Registration
-
+        // Error Handling Services
         services.AddExceptionHandler<GlobalExceptionHandler>(); // Global Exception Handling
-
         services.AddProblemDetails(); // Problem Details Support
 
         // Returns the configured service collection

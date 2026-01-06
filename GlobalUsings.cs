@@ -1,9 +1,8 @@
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.RateLimiting;
-global using System.Threading.RateLimiting;
+global using Microsoft.AspNetCore.Diagnostics;
 global using FluentValidation;
-global using Microsoft.Extensions.DependencyInjection;
 global using Scalar.AspNetCore;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using System.Text.Json;
@@ -11,3 +10,4 @@ global using AZ900Prep.Api.Domain.Entities;
 global using AZ900Prep.Api.Infrastructure.Data;
 global using AZ900Prep.Api.Common;
 global using AZ900Prep.Api.Features.Exams.GetStandardExam;
+global using AZ900Prep.Api.Features.Exams.GetEndlessQuestions;
