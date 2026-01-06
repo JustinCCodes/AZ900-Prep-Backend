@@ -31,6 +31,8 @@ public static class DependencyInjection
                        .AllowAnyHeader());
         });
 
+        services.AddScoped<GetStandardExamHandler>();
+
         return services;
     }
 

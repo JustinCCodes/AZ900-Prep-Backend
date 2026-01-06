@@ -19,6 +19,7 @@
   <None Update="Infrastructure/Data/questions-seed.json">
   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 </None>
+  <PackageReference Include="Scalar.AspNetCore" Version="2.11.10" />
 </ItemGroup>
 
 </Project>
