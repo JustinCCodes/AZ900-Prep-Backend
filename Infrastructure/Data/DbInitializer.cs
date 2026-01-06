@@ -19,16 +19,13 @@ public static class DbInitializer
 
         // Reads and deserializes the JSON data
         var json = await File.ReadAllTextAsync(seedPath);
-        var questions = JsonSerializer.Deserialize<List<Question>>(json, new JsonSerializerOptions
-        {
-            // Allows case insensitive property matching
-            PropertyNameCaseInsensitive = true
-        });
+
+        // Deserializes JSON into list of questions
+        var questions = JsonSerializer.Deserialize<List<Question>>(json, JsonSerializerOptions.Web);
 
         // Adds questions to database if any were found
         if (questions is { Count: > 0 })
         {
-            // Adds questions and saves changes
             await context.Questions.AddRangeAsync(questions);
             await context.SaveChangesAsync();
         }

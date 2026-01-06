@@ -12,6 +12,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseSecurityHeaders(); // Custom Security Headers Middleware
@@ -19,5 +20,7 @@ app.UseHttpsRedirection(); // Enforces HTTPS
 app.UseCors("FrontendOnly"); // Restricts to Frontend Origin
 app.UseRateLimiter(); // Guards before hits endpoints
 
-await app.UseSeedData();
-app.Run();
+app.MapGetStandardExam(); // Maps Exam Endpoint
+
+await app.UseSeedData(); // Seeds Initial Data
+app.Run(); // Starts the Application
