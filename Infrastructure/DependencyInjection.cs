@@ -25,14 +25,20 @@ public static class DependencyInjection
         // Locked to Frontend Port
         services.AddCors(options =>
         {
+            // CORS policy allowing only frontend origin
             options.AddPolicy("FrontendOnly", builder =>
                 builder.WithOrigins("http://localhost:3000")
-                       .AllowAnyMethod()
-                       .AllowAnyHeader());
+                       .AllowAnyMethod() // Allows all HTTP methods
+                       .AllowAnyHeader()); // Allows all headers
         });
 
-        services.AddScoped<GetStandardExamHandler>();
+        services.AddScoped<GetStandardExamHandler>(); // Exam Handler Registration
 
+        services.AddExceptionHandler<GlobalExceptionHandler>(); // Global Exception Handling
+
+        services.AddProblemDetails(); // Problem Details Support
+
+        // Returns the configured service collection
         return services;
     }
 
